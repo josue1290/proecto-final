@@ -30,13 +30,13 @@ include_once("../conexion/conexionBD.php");
         <input type="number" name="min" class="min-precio" placeholder="$300">
         <p>Precio máximo</p>
         <input type="number" name="max" class="max-precio" placeholder="$6,000">
-        <input type="submit" class="buscar-filtro" value="Buscar" />
+        <input type="submit" class="buscar-filtro" value="Buscar"  />
     </form>
 </aside>
 
 <?php
 echo "<div class='caja-productos'>";
-    $queryusuarios = mysqli_query($conexion, "SELECT * FROM productos where estatus='0' ORDER BY id_producto asc");
+    $queryusuarios = mysqli_query($conexion, "SELECT * from productos order by precio desc");
     $numerofila = 0;
         while($mostrar = mysqli_fetch_array($queryusuarios)) 
 		{    $numerofila++;

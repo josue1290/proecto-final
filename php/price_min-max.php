@@ -22,7 +22,7 @@ include_once("../conexion/conexionBD.php");
 <aside class="filtros">
     <h1 class="titulo-filtros">Filtros</h1>
     <h3>Precio</h3>
-    <input type="submit" onclick="location.href='price_min-max.php'" class="mayor-menor" value="Menor a mayor"><br>
+    <input type="submit" onclick="location.href='price_min-max.php'"  class="mayor-menor" value="Menor a mayor"><br>
     <input type="submit" onclick="location.href='price_max-min.php'" class="mayor-menor" value="Mayor a menor">
     <form action="fil_price.php" method="POST"><br>
         <h3>Entre precio</h3>
@@ -30,13 +30,13 @@ include_once("../conexion/conexionBD.php");
         <input type="number" name="min" class="min-precio" placeholder="$300">
         <p>Precio máximo</p>
         <input type="number" name="max" class="max-precio" placeholder="$6,000">
-        <input type="submit" class="buscar-filtro" value="Buscar" />
+        <input type="submit" class="buscar-filtro" value="Buscar"  />
     </form>
 </aside>
 
 <?php
 echo "<div class='caja-productos'>";
-    $queryusuarios = mysqli_query($conexion, "SELECT * FROM productos where estatus='0' ORDER BY id_producto asc");
+    $queryusuarios = mysqli_query($conexion, "SELECT * from productos order by precio asc");
     $numerofila = 0;
         while($mostrar = mysqli_fetch_array($queryusuarios)) 
 		{    $numerofila++;

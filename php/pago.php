@@ -38,13 +38,13 @@ while($mostrar = mysqli_fetch_array($querybuscar))
             </tr> 
             <tr> 
                 <td>Unidades</td>
-                <td><input type="number" name="unidades"></td>
+                <td><input type="number" name="unidades" ></td>
             </tr>
             <tr>
 				
                 <td colspan="2">
 				<a href="../php/productos.php">Cerrar</a>
-				<input type="submit" name="btnmodificar" value="Modificar" onClick="javascript: return confirm('¿Es correcto el numero de unidades que desea comprar?');">
+				<input type="submit" name="btnmodificar" value="Agregar" onClick="javascript: return confirm('¿Es correcto el numero de unidades que desea comprar?');">
 				</td>
             </tr>
         </table>
@@ -57,10 +57,10 @@ while($mostrar = mysqli_fetch_array($querybuscar))
 	
 	if(isset($_POST['btnmodificar']))
 {    
-    $id = $mostrar['id_producto'];
-    $nombre = $mostrar['nombre'];  
-	$precio_unid = $mostrar['precio'] * $mostrar['unidades'];
-	$unidades= $mostrar['unidades']; 
+    $id = $_POST['id_producto'];
+    $nombre = $_POST['nombre'];  
+	$precio = $_POST['precio'];
+	$unidades= $_POST['unidades']; 
 
     $querymodificar = mysqli_query($conexion, "INSERT INTO pre_venta 
     VALUES
@@ -72,7 +72,7 @@ while($mostrar = mysqli_fetch_array($querybuscar))
    
     WHERE id_producto=$id");
 
-  	echo "<script>window.location= '../php/productos.php' </script>";
+  	// echo "<script>window.location= '../php/productos.php' </script>";
     
 }
 ?>

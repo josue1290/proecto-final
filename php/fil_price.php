@@ -1,5 +1,8 @@
 <?php
 include_once("../conexion/conexionBD.php"); 
+
+$min 	= $_POST["min"];
+$max 	= $_POST["max"];
 ?>
 
 <!DOCTYPE html>
@@ -22,21 +25,21 @@ include_once("../conexion/conexionBD.php");
 <aside class="filtros">
     <h1 class="titulo-filtros">Filtros</h1>
     <h3>Precio</h3>
-    <input type="submit" onclick="location.href='price_min-max.php'" class="mayor-menor" value="Menor a mayor"><br>
-    <input type="submit" onclick="location.href='price_max-min.php'" class="mayor-menor" value="Mayor a menor">
-    <form action="fil_price.php" method="POST"><br>
+    <input type="button" class="mayor-menor" value="Menor a mayor"><br>
+    <input type="button" class="mayor-menor" value="Mayor a menor">
+    <form action="" method="POST"><br>
         <h3>Entre precio</h3>
         <p>Precio mínimo</p>
-        <input type="number" name="min" class="min-precio" placeholder="$300">
+        <input type="number" class="min-precio" placeholder="$300">
         <p>Precio máximo</p>
-        <input type="number" name="max" class="max-precio" placeholder="$6,000">
-        <input type="submit" class="buscar-filtro" value="Buscar" />
+        <input type="number" class="max-precio" placeholder="$6,000">
+        <input type="button" class="buscar-filtro" value="Buscar">
     </form>
 </aside>
 
 <?php
 echo "<div class='caja-productos'>";
-    $queryusuarios = mysqli_query($conexion, "SELECT * FROM productos where estatus='0' ORDER BY id_producto asc");
+    $queryusuarios = mysqli_query($conexion, "SELECT * FROM productos where estatus='0'and precio between '$min' and  '$max' ORDER BY id_producto asc");
     $numerofila = 0;
         while($mostrar = mysqli_fetch_array($queryusuarios)) 
 		{    $numerofila++;
@@ -54,11 +57,11 @@ echo "<div class='caja-productos'>";
         }echo "</div>";
 ?>
 <!-- Esto es el footer -->
-<footer>
+<!-- <footer>
     <?php
         include "footer.php"
     ?>
-</footer>
+</footer> -->
 <script src="/js/header.js"></script>
 </main>
 </body>
