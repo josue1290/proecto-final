@@ -1,0 +1,198 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+    color: #FEFCFB;
+}
+
+nav{
+    height: 6rem;
+    width: 100%;
+    display: flex;
+    position: fixed;
+    z-index: 10;
+    background-color: #14213D;
+}
+
+/* Estilo del logo */
+
+header .logo{
+    padding: 20px;
+    text-align: left;
+    width: 20%;
+    position: relative;
+    left: 5%;
+}
+
+header .logo img{
+    height: 100%;
+    width: auto;
+}
+
+main{
+    color: #FEFCFB;
+    display: list-item;
+}
+
+/* Carrito de compras */
+
+main .caja-carrito{
+    display: grid;
+    position: relative;
+    top: 130px;
+    left: 20%;
+    width: 60%;
+    height: auto;
+    background-color: #E5E5E5;
+}
+
+main .caja-carrito .producto{
+    display: grid;
+    position: relative;
+    width: 100%;
+    height: 180px;
+    background-color: #FEFCFB;
+    list-style: none;
+    margin-bottom: 2px;
+    grid-template-columns: repeat(2, auto);
+}
+
+main .caja-carrito .producto .img-producto{
+    position: relative;
+    top: 10px;
+    width: auto;
+    height: 170px;
+    margin: 0 auto;
+}
+
+main .caja-carrito .producto .texto-producto{
+    padding: 30px;
+    position: relative;
+}
+
+main .caja-carrito .producto .texto-producto .nombre-producto{
+    color: #0C0C0C;
+}
+
+main .caja-carrito .producto .texto-producto .precio{
+    color: red;
+}
+
+main .caja-carrito .producto .texto-producto .quitar-del-carrito{
+    position: relative;
+    top: 10px;
+    width: 90px;
+    height: 70px;
+    border: 0;
+    left: 70%;
+    border-radius: 10px;
+    background-color: red;
+}
+
+main .caja-carrito .producto .texto-producto .quitar-del-carrito .carrito{
+    width: 80%;
+    height: 80%;
+}
+
+/* Pago */
+
+main .pago{
+    display: flex;
+    width: 100%;
+    height: 100px;
+    padding: 30px;
+    background-color: #0C0C0C;
+    position: relative;
+    top: 90px;
+    left: 0;
+    justify-content: space-around;
+    align-items: center;
+}
+
+main .pago .pagar{
+    position: relative;
+    width: 30%;
+    height: 50px;
+    background-color: #38b000;
+    border-radius: 10px;
+    border: 0;
+    font-size: large;
+}
+
+main .pago .total{
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 30%;
+    height: 50px;
+    background-color: #0C0C0C;
+    border: 0;
+    font-size: large;
+    text-align: center;
+    padding-top: 5px;
+}
+
+@media screen and (max-width: 980px) {
+
+    main .filtros{
+        position: relative;
+        left: 0%;
+        width: 100%;
+        height: auto;
+        top: 100px;
+        border-radius: 10px;
+        background-color: #E5E5E5;
+    }
+
+    main .filtros h3{
+        color: #0C0C0C;
+        text-align: center;
+    }
+
+    main .caja-carrito{
+        position: relative;
+        top: 130px;
+        left: 0%;
+        width: 100%;
+        height: auto;
+    }
+
+    main .caja-carrito .producto .img-producto{
+        height: 100px;
+        margin: 0 auto;
+    }
+
+    main .filtros input{
+        color: #0C0C0C;
+        position: relative;
+        border: 0;
+        height: 30px;
+        padding: 3px;
+        margin-top: 5px;
+        box-shadow: none;
+        width: 50%;
+        background-color: #FEFCFB;
+        left: 25%;
+    }
+
+    main .filtros p{
+        position: relative;
+        width: 50%;
+        left: 25%;
+    }
+
+    main .caja-carrito .producto .texto-producto .quitar-del-carrito{
+        position: relative;
+        bottom: 10%;
+        width: 30%;
+        height: 35%;
+        left: 70%;
+    }
+    
+    main .caja-carrito .producto .texto-producto .quitar-del-carrito .carrito{
+        width: 80%;
+        height: 80%;
+    }
+
+}

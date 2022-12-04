@@ -1,0 +1,75 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+    color: #FEFCFB;
+}
+
+nav{
+    height: 6rem;
+    width: 100%;
+    display: flex;
+    position: fixed;
+    z-index: 10;
+    background-color: #14213D;
+}
+
+header .logo{
+    padding: 20px;
+    text-align: left;
+    width: 20%;
+    position: relative;
+    left: 5%;
+}
+
+header .logo img{
+    height: 100%;
+    width: auto;
+}
+
+main{
+    color: #FEFCFB;
+    display: list-item;
+    position: absolute;
+    width: 100%;
+}
+
+main .texto-privacidad{
+    width: 80%;
+    height: auto;
+    position: relative;
+    left: 10%;
+    top: 120px;
+    background-color: #14213D;
+    border-radius: 10px;
+    padding: 60px;
+    text-align: justify;
+}
+
+main .texto-privacidad .fecha{
+    text-align: end;
+}
+
+main .texto-privacidad .titulo{
+    text-align: center;
+    padding-bottom: 20px;
+    padding-top: 20px;
+}
+
+main .texto-privacidad p{
+    padding-bottom: 10px;
+}
+
+main .texto-privacidad h3{
+    padding-bottom: 10px;
+}
+
+/* Esto es el footer */
+
+footer{
+    position: absolute;
+    top: 120%;
+    width: 100%;
+    height: auto;
+}

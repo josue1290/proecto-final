@@ -1,0 +1,225 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+    color: #FEFCFB;
+}
+
+nav{
+    height: 6rem;
+    width: 100%;
+    display: flex;
+    position: fixed;
+    z-index: 10;
+    background-color: #14213D;
+}
+
+/* Esta es la parte de login y registro */
+
+main .caja-login-registro{
+    width: 70%;
+    height: 60%;
+    padding: 40px;
+    position: absolute;
+    top: 20%;
+    left: 15%;
+    background-color: #14213D;
+    border-radius: 10px;
+}
+
+main .caja-login-registro .caja-login{
+    width: 100%;
+    height: 90%;
+    position: relative;
+}
+
+main .caja-login-registro .caja-login .registro{
+    width: 45%;
+    height: 90%;
+}
+
+main .caja-login-registro .caja-login .login{
+    background-color: #E5E5E5;
+    padding: 10px;
+    border-radius: 10px;
+    width: 50%;
+    height: 100%;
+    position: relative;
+    top: -90%;
+    left: 50%;
+}
+
+main .caja-login-registro .caja-login .registro input{
+    width: 100%;
+    height: 30px;
+    border-radius: 5px;
+    box-shadow: none;
+    border: none;
+    outline: none;
+    text-transform: 5px;
+    color: #0C0C0C;
+    font-size: 18px;
+}
+
+main .caja-login-registro .caja-login .registro h3{
+    font-size: large;
+    margin-top: 10px;
+}
+
+main .caja-login-registro .caja-login .registro .lei-terminos{
+    position: relative;
+    left: 0;
+    top: 30px;
+    width: 30px;
+    height: 30px;
+}
+
+main .caja-login-registro .caja-login .registro .texto-terminos{
+    position: relative;
+    left: 40px;
+    top: -10px;
+}
+
+main .caja-login-registro .caja-login .registro .registrar{
+    background-color: #38b000;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    position: relative;
+    left: -40px;
+}
+
+main .caja-login-registro .caja-login .login h2{
+    color: #0C0C0C;
+    text-align: center;
+}
+
+main .caja-login-registro .caja-login .registro h2{
+    color: #FEFCFB;
+    text-align: center;
+}
+
+main .caja-login-registro .caja-login .login h3{
+    color: #0C0C0C;
+    margin-top: 10px;
+}
+
+main .caja-login-registro .caja-login .login form{
+    color: #0C0C0C;
+    position: relative;
+    top: 25%;
+}
+
+main .caja-login-registro .caja-login .login input{
+    width: 100%;
+    height: 30px;
+    border-radius: 5px;
+    box-shadow: none;
+    border: none;
+    outline: none;
+    text-transform: 5px;
+    color: #0C0C0C;
+    font-size: 18px;
+}
+
+main .caja-login-registro .caja-login .login .iniciar{
+    background-color: #38b000;
+    margin-top: 10px;
+}
+
+/* Estilo del logo */
+
+header .logo{
+    padding: 20px;
+    text-align: left;
+    width: 20%;
+    position: relative;
+    left: 5%;
+}
+
+header .logo img{
+    height: 100%;
+    width: auto;
+}
+
+main{
+    color: #FEFCFB;
+}
+
+/* Esto es el footer */
+
+footer{
+    display: inline-block;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: auto;
+}
+
+@media only screen and (max-width: 980px){
+
+    body{
+        background-color: #14213D;
+    }
+
+    main .caja-login-registro{
+        width: 100%;
+        height: 100%;
+        top: 100px;
+        left: 0%;
+        border-radius: 0px;
+        position: relative;
+    }
+
+    main .caja-login-registro .caja-login{
+        width: 100%;
+        height: 60%;
+        paddinG: 0;
+    }
+
+    main .caja-login-registro .caja-login .registro{
+        position: relative;
+        top: 35%;
+        width: 90%;
+        height: auto;
+        padding: 0;
+    }
+
+    main .caja-login-registro .caja-login .login{
+        position: relative;
+        top: 60%;
+        width: 100%;
+        left: 0%;
+        padding: 10px;
+    }
+
+    main .caja-login-registro .caja-login .registro form{
+        color: #0C0C0C;
+        position: relative;
+        top: 25%;
+        left: 5%;
+    }
+
+    main .caja-login-registro .caja-login .login form{
+        color: #0C0C0C;
+        position: relative;
+        top: 25%;
+        left: 5%;
+    }
+
+    main .caja-login-registro .caja-login .login input{
+        width: 90%;
+        position: relative;
+    }
+
+    /* Esto es el footer */
+
+footer{
+    display: inline-block;
+    position: absolute;
+    top: 110%;
+    width: 100%;
+    height: auto;
+}
+}
+
