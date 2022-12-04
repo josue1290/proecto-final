@@ -1,3 +1,9 @@
+<?php
+
+include_once '../conexion/conexionBD.php';
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,82 +29,26 @@
         <button class="pagar">Pagar</button>
     </div>
 
-<!-- Productors del carrito -->
-    <div class="caja-carrito">
-        <div class="producto">
-            <img src="../img/productos/choco.png" alt="Chocomilk" class="img-producto">
-            <div class="texto-producto">
-                <h3 class="nombre-producto">Chocomilk Pancho Pantera 500ml</h3>
-                <span class="precio">$3,000.00</span><br>
-                <button class="quitar-del-carrito"><img class="carrito" src="../img/pagina/carritox.svg" alt=""></button>
+<!-- Productos del carrito -->
+<?php
+    echo  "<div class='caja-carrito'>";
+    $queryusuarios = mysqli_query($conexion, "SELECT * FROM pre_venta ORDER BY nd asc");
+    $numerofila = 0;
+        while($mostrar = mysqli_fetch_array($queryusuarios)) 
+		{    $numerofila++;
+            echo "
+        <div class='producto'>
+        <img src='"; echo "../img/productos/"; echo $mostrar['img']; echo "'"; echo "alt='Chocomilk' class='img-producto'>
+            <div class='texto-producto'>
+            <h3 class='nombre-producto'>"; echo '<td>'.$mostrar['nombre'].'</td>'; echo "</h3>
+            <span class='precio'>"; echo '<td>'.$mostrar['precio'].'</td>'; echo "</span><br>
+            <button class='quitar-del-carrito'"; echo "href=\"pago.php?nd=$mostrar[id_producto]\")\""; echo "><img class='carrito' src='../img/pagina/carrito.svg' alt=''></button>
             </div>
-        </div>
-        <div class="producto">
-            <img src="../img/productos/choco.png" alt="Chocomilk" class="img-producto">
-            <div class="texto-producto">
-                <h3 class="nombre-producto">Chocomilk Pancho Pantera 500ml</h3>
-                <span class="precio">$3,000.00</span><br>
-                <button class="quitar-del-carrito"><img class="carrito" src="../img/pagina/carritox.svg" alt=""></button>
             </div>
-        </div>
-        <div class="producto">
-            <img src="../img/productos/choco.png" alt="Chocomilk" class="img-producto">
-            <div class="texto-producto">
-                <h3 class="nombre-producto">Chocomilk Pancho Pantera 500ml</h3>
-                <span class="precio">$3,000.00</span><br>
-                <button class="quitar-del-carrito"><img class="carrito" src="../img/pagina/carritox.svg" alt=""></button>
-            </div>
-        </div>
-        <div class="producto">
-            <img src="../img/productos/choco.png" alt="Chocomilk" class="img-producto">
-            <div class="texto-producto">
-                <h3 class="nombre-producto">Chocomilk Pancho Pantera 500ml</h3>
-                <span class="precio">$3,000.00</span><br>
-                <button class="quitar-del-carrito"><img class="carrito" src="../img/pagina/carritox.svg" alt=""></button>
-            </div>
-        </div>
-        <div class="producto">
-            <img src="../img/productos/choco.png" alt="Chocomilk" class="img-producto">
-            <div class="texto-producto">
-                <h3 class="nombre-producto">Chocomilk Pancho Pantera 500ml</h3>
-                <span class="precio">$3,000.00</span><br>
-                <button class="quitar-del-carrito"><img class="carrito" src="../img/pagina/carritox.svg" alt=""></button>
-            </div>
-        </div>
-        <div class="producto">
-            <img src="../img/productos/choco.png" alt="Chocomilk" class="img-producto">
-            <div class="texto-producto">
-                <h3 class="nombre-producto">Chocomilk Pancho Pantera 500ml</h3>
-                <span class="precio">$3,000.00</span><br>
-                <button class="quitar-del-carrito"><img class="carrito" src="../img/pagina/carritox.svg" alt=""></button>
-            </div>
-        </div>
-        <div class="producto">
-            <img src="../img/productos/choco.png" alt="Chocomilk" class="img-producto">
-            <div class="texto-producto">
-                <h3 class="nombre-producto">Chocomilk Pancho Pantera 500ml</h3>
-                <span class="precio">$3,000.00</span><br>
-                <button class="quitar-del-carrito"><img class="carrito" src="../img/pagina/carritox.svg" alt=""></button>
-            </div>
-        </div>
-        <div class="producto">
-            <img src="../img/productos/choco.png" alt="Chocomilk" class="img-producto">
-            <div class="texto-producto">
-                <h3 class="nombre-producto">Chocomilk Pancho Pantera 500ml</h3>
-                <span class="precio">$3,000.00</span><br>
-                <button class="quitar-del-carrito"><img class="carrito" src="../img/pagina/carritox.svg" alt=""></button>
-            </div>
-        </div>
-        <div class="producto">
-            <img src="../img/productos/choco.png" alt="Chocomilk" class="img-producto">
-            <div class="texto-producto">
-                <h3 class="nombre-producto">Chocomilk Pancho Pantera 500ml</h3>
-                <span class="precio">$3,000.00</span><br>
-                <button class="quitar-del-carrito"><img class="carrito" src="../img/pagina/carritox.svg" alt=""></button>
-            </div>
-        </div>
-        
-    </div>
+        ";       
+    }echo "</div>";
+    ?>
+
 </main>
 </body>
 </html>

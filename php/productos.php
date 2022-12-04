@@ -46,7 +46,7 @@ echo "<div class='caja-productos'>";
                 <div class='texto-producto'>
                     <h3 class='nombre-producto'>"; echo '<td>'.$mostrar['nombre'].'</td>'; echo "</h3>
                     <span class='precio'>"; echo '<td>'.$mostrar['precio'].'</td>'; echo "</span><br>
-                    <button class='agregar-carrito'"; echo "href=\"pago.php?nd=$mostrar[id_producto]\")\""; echo "><img class='carrito' src='../img/pagina/carrito.svg' alt=''></button>
+                    <button "; echo "onclick='location.href=\"pago.php?nd=$mostrar[id_producto]\")\'"; echo "><img class='carrito' src='../img/pagina/carrito.svg' alt=''></button>
                 </div>
             </div>
         ";

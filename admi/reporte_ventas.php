@@ -13,8 +13,8 @@ include_once("../conexion/conexionBD.php");
 </head>
 <body>
 <div class="wave"></div>
-     <div class="wave"></div>
-     <div class="wave"></div>
+    <div class="wave"></div>
+    <div class="wave"></div>
     <table>
 	<img src="../img/iconosh2.png">
 			<div id="barrabuscar">
