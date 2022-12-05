@@ -16,14 +16,14 @@
 </header>
 <main>
     <div class="caja-formulario">
-        <form action="" class="formulario">
+        <form action="check_contac.php" method="post" class="formulario">
             <h1 class="titulo">Contácto</h1>
             <h3 class="text-nombre">Nombre completo:</h3>
-            <input type="text" maxlength="50" class="nombre" placeholder=" Escribe tu nombre" required>
+            <input type="text" maxlength="50" class="nombre" placeholder=" Escribe tu nombre" name="nombre" required>
             <h3 class="text-correo">Correo electrónico:</h3>
-            <input type="email" class="correo" maxlength="80" placeholder=" ejemplo@ejemplo.com" required>
+            <input type="email" class="correo" maxlength="80" placeholder=" ejemplo@ejemplo.com" name="correo" required>
             <h3 class="text-problematica">Descripción:</h3>
-            <textarea rows="5" class="problematica" maxlength="255" placeholder=" Escribe tu pregunta o mensaje" required></textarea>
+            <textarea rows="5" class="problematica" maxlength="255" placeholder=" Escribe tu pregunta o mensaje"  name="descripcion" required></textarea>
             <input type="submit" class="btn-enviar" value="Enviar">
             <input type="reset" class="btn-cancelar" value="Cancelar">
         </form>

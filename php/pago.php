@@ -1,78 +1,35 @@
-<?php 
-include_once("../conexion/conexionBD.php");
-include_once("../php/productos.php");
-
-$codigo = $_GET['nd'];
- 
-$querybuscar = mysqli_query($conexion, "SELECT * FROM productos WHERE id_producto=$codigo");
- 
-while($mostrar = mysqli_fetch_array($querybuscar))
-{
-    $id = $mostrar['id_producto'];
-    $nombre = $mostrar['nombre'];  
-	$precio = $mostrar['precio'];  
-}
-?>
-<html>
-<head>    
-		<title>Descripcion</title>
-		<meta charset="UTF-8">
-		<link rel="stylesheet" href="../style.css">
-</head>
-<body>
-<div class="caja_popup2" id="formmodificar">
-  <form method="POST" class="contenedor_popup" >
-        <table>
-		<tr><th colspan="2">Descripcion del producto</th></tr>
-        <tr> 
-                <td>No. Producto</td>
-                <td><input name="id" value="<?php echo $id;?>" disabled></td>
-            </tr>
-            <tr> 
-                <td>Nombre</td>
-                <td><input name="nombre" value="<?php echo $nombre;?>" disabled></td>
-            </tr> 
-            <tr> 
-                <td>Precio</td>
-                <td><input  name="precio" value="<?php echo $precio;?>" disabled></td>
-            </tr> 
-            <tr> 
-                <td>Unidades</td>
-                <td><input type="number" name="unidades" ></td>
-            </tr>
-            <tr>
-				
-                <td colspan="2">
-				<a href="../php/productos.php">Cerrar</a>
-				<input type="submit" name="btnmodificar" value="Agregar" onClick="javascript: return confirm('¿Es correcto el numero de unidades que desea comprar?');">
-				</td>
-            </tr>
-        </table>
-    </form>
-</div>
-</body>
-</html>
-
 <?php
-	
-	if(isset($_POST['btnmodificar']))
-{    
-    $id = $_POST['id_producto'];
-    $nombre = $_POST['nombre'];  
-	$precio = $_POST['precio'];
-	$unidades= $_POST['unidades']; 
+include_once "../conexion/conexionBD.php";
+ 
+$nd = $_GET['nd'];
 
-    $querymodificar = mysqli_query($conexion, "INSERT INTO pre_venta 
-    VALUES
-    id=$id, 
-    nombre=$nombre,
-    precio=$precio, 
-	unidades=$unidades,
-    now(),
-   
-    WHERE id_producto=$id");
-
-  	// echo "<script>window.location= '../php/productos.php' </script>";
+$consulta="SELECT * FROM productos WHERE id_producto=$nd";
+    $query_consulta=mysqli_query($conexion,$consulta);
+    while ($consulta2=mysqli_fetch_array($query_consulta))
+    {
+        $nd2 = $consulta2['id_producto'];
+        $nombre2 = $consulta2['nombre'];
+        $precio2 = $consulta2['precio'];
+        $img =  $consulta2['img'];
+    }
     
-}
+    $unidades = '1';
+    $estatus = '0';
+    
+    $existe = mysqli_query($conexion, "SELECT * FROM pre_venta where id_producto=$nd2");
+    $filas=mysqli_fetch_array($existe);
+    
+    if($filas==false){
+        mysqli_query($conexion, "INSERT INTO pre_venta (img,id_producto,nombre,precio,unidades,fecha,estatus) VALUES ('$img',$nd2,'$nombre2',$precio2,$unidades, now(),$estatus)");
+        
+        mysqli_query($conexion, "UPDATE productos SET inventario = inventario - $unidades where id_producto = $nd");
+    }
+    else{
+        mysqli_query($conexion, "UPDATE pre_venta SET  unidades  = unidades + $unidades, precio = precio + $precio2 where id_producto=$nd2");
+        mysqli_query($conexion, "UPDATE productos SET inventario = inventario - $unidades where id_producto = $nd");
+    }
+
+
+    header("location:productos.php");
+
 ?>

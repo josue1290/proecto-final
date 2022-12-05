@@ -36,7 +36,7 @@ include_once("../conexion/conexionBD.php");
 
 <?php
 echo "<div class='caja-productos'>";
-    $queryusuarios = mysqli_query($conexion, "SELECT * FROM productos where estatus='0' ORDER BY id_producto asc");
+    $queryusuarios = mysqli_query($conexion, "SELECT * FROM productos where estatus='0' and inventario  >=1 ORDER BY id_producto asc");
     $numerofila = 0;
         while($mostrar = mysqli_fetch_array($queryusuarios)) 
 		{    $numerofila++;
