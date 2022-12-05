@@ -45,16 +45,17 @@ while($mostrar = mysqli_fetch_array($querybuscar))
             </tr> 
             <tr> 
                 <td>Precio</td>
-                <td><input  value="<?php echo $precio;?>" disabled></td>
+                <td><input  name="precio" value="<?php echo $precio;?>"></td>
             </tr> 
             <tr> 
                 <td>Stock</td>
-                <td><input value="<?php echo $inventario;?>" disabled></td>
+                <td><input name="inventario" value="<?php echo $inventario;?>"></td>
             </tr>
             <tr>
 				
                 <td colspan="2">
 				<a href="../admi/admi.php">Cerrar</a>
+				<input type="submit" name="btnmodificar" value="Modificar">
 				</td>
             </tr>
         </table>
@@ -67,33 +68,17 @@ while($mostrar = mysqli_fetch_array($querybuscar))
 	
 	if(isset($_POST['btnmodificar']))
 {    
-    $nombre = $_POST['nombre'];
-    $apellidos = $_POST['apellidos'];    
-	$sexo = $_POST['sexo'];  
-	$fecha_nac = $_POST['fecha_nac'];  
-	$rfc= $_POST['rfc'];  
-    $correo = $_POST['correo'];  
-	$tel = $_POST['num_tel'];  
-    $fecha_con = $_POST['fecha_contratacion'];  
-    $puesto = $_POST['puesto'];  
-	$direccion = $_POST['direccion'];
+    $precio = $_POST['precio'];
+    $inventario = $_POST['inventario'];    
 
-    $querymodificar = mysqli_query($conexion, "UPDATE empleados 
+    $querymodificar = mysqli_query($conexion, "UPDATE productos 
     SET 
-    nombre=$nombre,
-    apellidos=$apellidos,  
-	sexo=$sexo,
-	fecha_nac=$fecha_nac,  
-	rfc=$rfc, 
-    correo=$correo, 
-	num_tel=$tel,
-    fecha_contratacion=$fecha_con,  
-    puesto=$puesto, 
-	direccion=$direccion,
+    precio=$precio,
+    inventario=$inventario,  
    
-    WHERE id_empleado=$nd");
+    WHERE id_producto=$id");
 
-  	echo "<script>window.location= '../admi/lis_emp.php' </script>";
+  	// echo "<script>window.location= '../admi/admi.php' </script>";
     
 }
 ?>

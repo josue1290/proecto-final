@@ -38,7 +38,6 @@ table
 }
 th 
 {
-    background: color:black;
     /* filter:alpha(opacity=100); 
     opacity:1; */
     height: 40px;

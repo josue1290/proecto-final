@@ -19,21 +19,21 @@ include_once("../conexion/conexionBD.php");
 		<a onclick="location.href='../login/log.php'">Logout</a>
         <a onclick="location.href='../admi/lis_emp.php'">Empleados</a>
         <a onclick="location.href='../admi/admi.php'">Productos</a>
-	    <input type="submit" value="Buscar" name="btnbuscar"><input type="text" name="txtbuscar" id="cajabuscar" placeholder="&#128270;Ingresar nombre de usuario">
 		</form>
 		</div>
 		
-		<tr><th colspan="7"><h1>VENTAS</h1><th colspan="2"><a style="font-weight: normal; font-size: 14px;" onclick="abrirform()">Filtrar</a></th></tr>
+		<tr><th colspan="5"><h1>VENTAS</h1><th colspan="2"><a style="font-weight: normal; font-size: 14px;" onclick="abrirform()">Filtrar</a></th></tr>
 			<tr>
 			<th>Nro</th>
 			<th>Nd</th>
 			<th>No. Producto</th>
+			<th>Nombre</th>
             <th>Total</th>
             <th>Fecha</th>
-            <th>No. Proyecto</th>
+            <!-- <th>No. Proyecto</th>
             <th>No. Promocion</th>
-            <th>No. Codigo</th>
-            <th>No. Cliente</th>
+            <th>No. Codigo</th> -->
+            <!-- <th>No. Cliente</th> -->
 			</tr>
         <?php 
 
@@ -53,12 +53,13 @@ $queryusuarios = mysqli_query($conexion, "SELECT * FROM ventas ORDER BY id_venta
 			echo "<td>".$numerofila."</td>";
             echo "<td>".$mostrar['id_ventas']."</td>";
             echo "<td>".$mostrar['id_producto']."</td>";
+            echo "<td>".$mostrar['nombre']."</td>";
             echo "<td>".$mostrar['total_venta']."</td>";    
 			echo "<td>".$mostrar['fecha']."</td>";  
-			echo "<td>".$mostrar['id_proyecto']."</td>";  
-			echo "<td>".$mostrar['id_promocion']."</td>";  
-			echo "<td>".$mostrar['id_codigo']."</td>";  
-			echo "<td>".$mostrar['id_cliente']."</td>";  
+			// echo "<td>".$mostrar['id_proyecto']."</td>";  
+			// echo "<td>".$mostrar['id_promocion']."</td>";  
+			// echo "<td>".$mostrar['id_codigo']."</td>";  
+			// echo "<td>".$mostrar['id_cliente']."</td>";  
 
 
 }
@@ -77,7 +78,7 @@ function cancelarform() {
 
 </script>
 <div class="caja_popup" id="formregistrar">
-  <form action="fil_venta.php" class="contenedor_popup" method="POST">
+  <form action="fil_venta.php" action="detalles_venta.php" class="contenedor_popup" method="POST">
         <table>
 		<tr><th colspan="2">Filtrar por fechas</th></tr>
             <tr> 

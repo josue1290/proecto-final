@@ -13,16 +13,15 @@ include_once("../conexion/conexionBD.php");
 </head>
 <body>
 <div class="wave"></div>
-    <div class="wave"></div>
-    <div class="wave"></div>
+     <div class="wave"></div>
+     <div class="wave"></div>
     <table>
 	<img src="../img/iconosh2.png">
 			<div id="barrabuscar">
 		<form method="POST">
-		<a onclick="location.href='../login/log.php'">Logout</a>
+		<a onclick="location.href='../index.php'">Logout</a>
         <a onclick="location.href='../admi/lis_emp.php'">Empleados</a>
         <a onclick="location.href='../admi/admi.php'">Productos</a>
-	    <input type="submit" value="Buscar" name="btnbuscar"><input type="text" name="txtbuscar" id="cajabuscar" placeholder="&#128270;Pendiente ">
 		</form>
 		</div>
 		
@@ -44,7 +43,7 @@ $queryusuarios = mysqli_query($conexion, "SELECT nombre FROM productos where id_
 }
 else
 {
-$queryusuarios = mysqli_query($conexion, "SELECT ventas.id_producto, nombre, descripcion, ventas.fecha, count(*) as total_ventas FROM  productos, ventas where productos.id_producto = ventas.id_producto group by id_producto");
+    $queryusuarios = mysqli_query($conexion, "SELECT ventas.id_producto, nombre, descripcion, ventas.fecha, count(*) as total_ventas FROM  productos, ventas where productos.id_producto = ventas.id_producto group by id_producto");
 }
 		$numerofila = 0;
         while($mostrar = mysqli_fetch_array($queryusuarios)) 

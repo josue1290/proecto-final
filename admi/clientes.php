@@ -38,7 +38,6 @@ table
 }
 th 
 {
-    background: color:black;
     /* filter:alpha(opacity=100); 
     opacity:1; */
     height: 40px;
@@ -158,7 +157,7 @@ img
 	<img src="../img/iconosh2.png">
 			<div id="barrabuscar">
 		<form method="POST">
-		<a onclick="location.href='../login/log.php'">Logout</a>
+		<a onclick="location.href='../index.php'">Logout</a>
         <a onclick="location.href='../admi/lis_emp.php'">Empleados</a>
         <a onclick="location.href='../admi/admi.php'">Usuarios</a>
 	    <input type="submit" value="Buscar" name="btnbuscar"><input type="text" name="txtbuscar" id="cajabuscar" placeholder="&#128270;Ingresar nombre de usuario">

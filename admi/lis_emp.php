@@ -17,7 +17,7 @@ include_once("../conexion/conexionBD.php");
 	<img src="../img/iconosh2.png">
 			<div id="barrabuscar">
 		<form method="POST">
-        <a onclick="location.href='../login/log.php'">Logout</a>
+        <a onclick="location.href='../index.php'">Logout</a>
         <a onclick="location.href='../admi/admi.php'">Productos</a>
         <a onclick="location.href='../admi/tic_admi.php'">Reportes</a>
 	    <input type="submit" value="Buscar" name="btnbuscar"><input type="text" name="txtbuscar" id="cajabuscar" placeholder="&#128270;Ingresar nombre de usuario">
