@@ -25,8 +25,8 @@ $max 	= $_POST["max"];
 <aside class="filtros">
     <h1 class="titulo-filtros">Filtros</h1>
     <h3>Precio</h3>
-    <input type="button" class="mayor-menor" value="Menor a mayor"><br>
-    <input type="button" class="mayor-menor" value="Mayor a menor">
+    <input type="submit" onclick="location.href='price_min-max.php'" class="mayor-menor" value="Menor a mayor"><br>
+    <input type="submit" onclick="location.href='price_max-min.php'" class="mayor-menor" value="Mayor a menor">
     <form action="" method="POST"><br>
         <h3>Entre precio</h3>
         <p>Precio mínimo</p>

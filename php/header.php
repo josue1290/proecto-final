@@ -15,7 +15,7 @@
                 <li><a href="/php/productos.php">Productos</a></li>
                 <li><a href="/php/encuentranos.php">Encuéntranos</a></li>
                 <li><a  href="/php/contacto.php">Contacto</a></li>
-                <li><a class="login-button" href="/php/login.php">Iniciar sesión</a></li>
+                <li><a class="login-button" href="/php/carrito.php">Carrito</a></li>
             </ul>
         </nav>
         <script src="js/header.js"></script>

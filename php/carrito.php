@@ -25,8 +25,8 @@ include_once '../conexion/conexionBD.php';
 
 <!-- Pago -->
     <div class="pago">
-        <span class="total">Total a pagar $3454545</span>
-        <button class="pagar">Pagar</button>
+        <span class="total"></span>
+        <input type="submit" onclick="location.href='borrar.php'" value='pagar'  name='btnpagar' class='pagar' />
     </div>
 
 <!-- Productos del carrito -->
@@ -43,13 +43,12 @@ include_once '../conexion/conexionBD.php';
             <h3 class='nombre-producto'>"; echo '<td>'.$mostrar['nombre'].'</td>'; echo "</h3>
             <span class='precio'>"; echo '<td>'.$mostrar['precio'].'</td>'; echo "</span><br>
             <span class='precio'>"; echo '<td>'.$mostrar['unidades'].'</td>'; echo "</span><br>
-            <button class='quitar-del-carrito'"; echo "href=\"pago.php?nd=$mostrar[id_producto]\")\""; echo "><img class='carrito' src='../img/pagina/carrito.svg' alt=''></button>
+            "; echo "<a href=\"del_car.php?nd=$mostrar[id_producto]\""; echo "><button class='quitar-del-carrito'><img class='carrito' src='../img/pagina/carrito.svg' alt=''></button>
             </div>
             </div>
         ";       
     }echo "</div>";
     ?>
-
 </main>
 </body>
 </html>

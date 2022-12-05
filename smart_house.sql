@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 04-12-2022 a las 22:21:38
+-- Tiempo de generación: 05-12-2022 a las 02:35:01
 -- Versión del servidor: 5.7.36
 -- Versión de PHP: 7.4.26
 
@@ -27,6 +27,7 @@ SET time_zone = "+00:00";
 -- Estructura de tabla para la tabla `adquisisiones`
 --
 
+DROP TABLE IF EXISTS `adquisisiones`;
 CREATE TABLE `adquisisiones` (
   `id_adquisicion` int(11) NOT NULL,
   `id_proveedor` int(11) DEFAULT NULL,
@@ -44,6 +45,7 @@ CREATE TABLE `adquisisiones` (
 -- Estructura de tabla para la tabla `capacitaciones`
 --
 
+DROP TABLE IF EXISTS `capacitaciones`;
 CREATE TABLE `capacitaciones` (
   `id_capacitacion` int(11) NOT NULL,
   `id_empleado` int(11) DEFAULT NULL,
@@ -66,6 +68,7 @@ INSERT INTO `capacitaciones` (`id_capacitacion`, `id_empleado`, `tipo_cap`, `des
 -- Estructura de tabla para la tabla `clientes`
 --
 
+DROP TABLE IF EXISTS `clientes`;
 CREATE TABLE `clientes` (
   `id_cliente` int(11) NOT NULL,
   `nombre` varchar(20) DEFAULT NULL,
@@ -93,6 +96,7 @@ INSERT INTO `clientes` (`id_cliente`, `nombre`, `apellidos`, `fecha_nac`, `sexo`
 -- Estructura de tabla para la tabla `cod_promocion`
 --
 
+DROP TABLE IF EXISTS `cod_promocion`;
 CREATE TABLE `cod_promocion` (
   `id_codigo` int(11) NOT NULL,
   `codigo` varchar(10) DEFAULT NULL,
@@ -104,9 +108,33 @@ CREATE TABLE `cod_promocion` (
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `contactanos`
+--
+
+DROP TABLE IF EXISTS `contactanos`;
+CREATE TABLE `contactanos` (
+  `nd` int(11) NOT NULL,
+  `nombre` varchar(100) NOT NULL,
+  `correo` varchar(100) NOT NULL,
+  `descripcion` varchar(256) NOT NULL,
+  `fecha` date NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `contactanos`
+--
+
+INSERT INTO `contactanos` (`nd`, `nombre`, `correo`, `descripcion`, `fecha`) VALUES
+(7, 'josue adame  godinez', 'josueadame@gmail.com', 'todo  chevere', '2022-12-04'),
+(6, 'josue adame  godinez', 'josueadame@gmail.com', 'klfajsdhglkasdfjnbgv', '2022-12-04');
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `empleados`
 --
 
+DROP TABLE IF EXISTS `empleados`;
 CREATE TABLE `empleados` (
   `id_empleado` int(11) NOT NULL,
   `nombre` varchar(20) DEFAULT NULL,
@@ -139,6 +167,7 @@ INSERT INTO `empleados` (`id_empleado`, `nombre`, `apellidos`, `sexo`, `fecha_na
 -- Estructura de tabla para la tabla `pre_venta`
 --
 
+DROP TABLE IF EXISTS `pre_venta`;
 CREATE TABLE `pre_venta` (
   `nd` int(11) NOT NULL,
   `img` varchar(256) NOT NULL,
@@ -151,13 +180,14 @@ CREATE TABLE `pre_venta` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
--- Volcado de datos para la tabla `pre_venta`
+-- Disparadores `pre_venta`
 --
-
-INSERT INTO `pre_venta` (`nd`, `img`, `id_producto`, `nombre`, `precio`, `unidades`, `fecha`, `estatus`) VALUES
-(1, 'foco.jpg', 1, 'foco', 200, 0, '2022-11-30', 1),
-(3, 'enchufe.jpg', 5, 'Smart plug', 800, 0, '2022-11-30', 0),
-(4, 'alexa.jpeg', 2, 'Alexa', 6999, 0, '2022-11-30', 1);
+DROP TRIGGER IF EXISTS `respaldoventa`;
+DELIMITER $$
+CREATE TRIGGER `respaldoventa` BEFORE DELETE ON `pre_venta` FOR EACH ROW insert into ventas  (img,id_producto,nombre,total_venta,fecha)
+    values(old.img,old.id_producto,old.nombre,old.precio,now())
+$$
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -165,6 +195,7 @@ INSERT INTO `pre_venta` (`nd`, `img`, `id_producto`, `nombre`, `precio`, `unidad
 -- Estructura de tabla para la tabla `productos`
 --
 
+DROP TABLE IF EXISTS `productos`;
 CREATE TABLE `productos` (
   `id_producto` int(11) NOT NULL,
   `nombre` varchar(20) DEFAULT NULL,
@@ -181,11 +212,11 @@ CREATE TABLE `productos` (
 --
 
 INSERT INTO `productos` (`id_producto`, `nombre`, `marcha`, `descripcion`, `precio`, `inventario`, `estatus`, `img`) VALUES
-(1, 'TV', 'Samsung', '32\" 4K Dolby Atmos', 4999, 2, 0, 'tv.jpg'),
-(2, 'Alexa', 'Amazon', 'Echo dot 4', 6999, 8, 0, 'alexa.jpeg'),
-(3, 'Foco', 'Philips', 'Exteriores RGB', 199, 11, 0, 'foco.jpg'),
-(4, 'Minisplit', 'Mirage', 'Mini split de 1 ton', 10000, 20, 0, 'minisplit.jpg'),
-(5, 'Smart plug', 'Mydlink', 'Enchufe inteligente', 800, 21, 0, 'enchufe.jpg');
+(1, 'TV', 'Samsung', '32\" 4K Dolby Atmos', 4999, 10, 0, 'tv.jpg'),
+(2, 'Alexa', 'Amazon', 'Echo dot 4', 6999, 11, 0, 'alexa.jpeg'),
+(3, 'Foco', 'Philips', 'Exteriores RGB', 199, 7, 0, 'foco.jpg'),
+(4, 'Minisplit', 'Mirage', 'Mini split de 1 ton', 10000, 17, 0, 'minisplit.jpg'),
+(5, 'Smart plug', 'Mydlink', 'Enchufe inteligente', 800, 19, 0, 'enchufe.jpg');
 
 -- --------------------------------------------------------
 
@@ -193,6 +224,7 @@ INSERT INTO `productos` (`id_producto`, `nombre`, `marcha`, `descripcion`, `prec
 -- Estructura de tabla para la tabla `promocion`
 --
 
+DROP TABLE IF EXISTS `promocion`;
 CREATE TABLE `promocion` (
   `id_promocion` int(11) NOT NULL,
   `id_producto` int(11) DEFAULT NULL,
@@ -206,6 +238,7 @@ CREATE TABLE `promocion` (
 -- Estructura de tabla para la tabla `proveedor`
 --
 
+DROP TABLE IF EXISTS `proveedor`;
 CREATE TABLE `proveedor` (
   `id_proveedor` int(11) NOT NULL,
   `nombre` varchar(20) DEFAULT NULL,
@@ -230,6 +263,7 @@ INSERT INTO `proveedor` (`id_proveedor`, `nombre`, `rfc`, `razon_social`, `repre
 -- Estructura de tabla para la tabla `proyectos`
 --
 
+DROP TABLE IF EXISTS `proyectos`;
 CREATE TABLE `proyectos` (
   `id_proyecto` int(11) NOT NULL,
   `nombre` varchar(20) DEFAULT NULL,
@@ -255,6 +289,7 @@ INSERT INTO `proyectos` (`id_proyecto`, `nombre`, `id_encargado`, `estado`, `tie
 -- Estructura de tabla para la tabla `proyecto_trabajador`
 --
 
+DROP TABLE IF EXISTS `proyecto_trabajador`;
 CREATE TABLE `proyecto_trabajador` (
   `id_proyecto` int(11) DEFAULT NULL,
   `id_empleado` int(11) DEFAULT NULL
@@ -276,6 +311,7 @@ INSERT INTO `proyecto_trabajador` (`id_proyecto`, `id_empleado`) VALUES
 -- Estructura de tabla para la tabla `report_sug`
 --
 
+DROP TABLE IF EXISTS `report_sug`;
 CREATE TABLE `report_sug` (
   `id_reporte` int(11) NOT NULL,
   `id_cliente` int(11) DEFAULT NULL,
@@ -292,6 +328,7 @@ CREATE TABLE `report_sug` (
 -- Estructura de tabla para la tabla `tickets`
 --
 
+DROP TABLE IF EXISTS `tickets`;
 CREATE TABLE `tickets` (
   `nd` int(11) NOT NULL,
   `user` varchar(256) DEFAULT NULL,
@@ -316,15 +353,28 @@ INSERT INTO `tickets` (`nd`, `user`, `correo`, `descripcion`, `estatus`, `asigna
 (20, 'josue', 'josueadame32@gmail.com', 'presento problemas con los microfonos de la cocina', 'recibido', 'Tecnico'),
 (21, 'josue', 'josueadame28@gmail.com', 'falata en yarda 20', 'recibido', 'DiseÃ±ador');
 
+--
+-- Disparadores `tickets`
+--
+DROP TRIGGER IF EXISTS `respaldo`;
+DELIMITER $$
+CREATE TRIGGER `respaldo` AFTER DELETE ON `tickets` FOR EACH ROW insert into bitacora (user,	correo,	descripcion, estatus, asignar, fecha	)
+    values (old.user, old.correo, old.descripcion, old.estatus, old.asignar, now() )
+$$
+DELIMITER ;
+
 -- --------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `ventas`
 --
 
+DROP TABLE IF EXISTS `ventas`;
 CREATE TABLE `ventas` (
   `id_ventas` int(11) NOT NULL,
+  `img` varchar(50) NOT NULL,
   `id_producto` int(11) DEFAULT NULL,
+  `nombre` varchar(100) NOT NULL,
   `total_venta` int(11) DEFAULT NULL,
   `fecha` date DEFAULT NULL,
   `id_proyecto` int(11) DEFAULT NULL,
@@ -337,11 +387,17 @@ CREATE TABLE `ventas` (
 -- Volcado de datos para la tabla `ventas`
 --
 
-INSERT INTO `ventas` (`id_ventas`, `id_producto`, `total_venta`, `fecha`, `id_proyecto`, `id_promocion`, `id_codigo`, `id_cliente`) VALUES
-(1, 1, 4999, '2022-10-13', NULL, NULL, NULL, 1),
-(2, 1, 4999, '2022-10-13', NULL, NULL, NULL, 2),
-(3, 2, 6999, '2021-10-13', NULL, NULL, NULL, 3),
-(4, 3, 199, '2020-10-13', NULL, NULL, NULL, 1);
+INSERT INTO `ventas` (`id_ventas`, `img`, `id_producto`, `nombre`, `total_venta`, `fecha`, `id_proyecto`, `id_promocion`, `id_codigo`, `id_cliente`) VALUES
+(1, '0', 1, '', 4999, '2022-10-13', NULL, NULL, NULL, 1),
+(2, '0', 1, '', 4999, '2022-10-13', NULL, NULL, NULL, 2),
+(3, '0', 2, '', 6999, '2021-10-13', NULL, NULL, NULL, 3),
+(5, 'foco.jpg', 3, 'Foco', 398, '2022-12-04', NULL, NULL, NULL, NULL),
+(6, 'minisplit.jpg', 4, 'Minisplit', 10000, '2022-12-04', NULL, NULL, NULL, NULL),
+(7, 'enchufe.jpg', 5, 'Smart plug', 800, '2022-12-04', NULL, NULL, NULL, NULL),
+(8, 'alexa.jpeg', 2, 'Alexa', 6999, '2022-12-04', NULL, NULL, NULL, NULL),
+(9, 'enchufe.jpg', 5, 'Smart plug', 800, '2022-12-04', NULL, NULL, NULL, NULL),
+(10, 'minisplit.jpg', 4, 'Minisplit', 10000, '2022-12-04', NULL, NULL, NULL, NULL),
+(11, 'foco.jpg', 3, 'Foco', 398, '2022-12-04', NULL, NULL, NULL, NULL);
 
 --
 -- Índices para tablas volcadas
@@ -373,6 +429,12 @@ ALTER TABLE `clientes`
 --
 ALTER TABLE `cod_promocion`
   ADD PRIMARY KEY (`id_codigo`);
+
+--
+-- Indices de la tabla `contactanos`
+--
+ALTER TABLE `contactanos`
+  ADD PRIMARY KEY (`nd`);
 
 --
 -- Indices de la tabla `empleados`
@@ -474,6 +536,12 @@ ALTER TABLE `cod_promocion`
   MODIFY `id_codigo` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT de la tabla `contactanos`
+--
+ALTER TABLE `contactanos`
+  MODIFY `nd` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
 -- AUTO_INCREMENT de la tabla `empleados`
 --
 ALTER TABLE `empleados`
@@ -483,7 +551,7 @@ ALTER TABLE `empleados`
 -- AUTO_INCREMENT de la tabla `pre_venta`
 --
 ALTER TABLE `pre_venta`
-  MODIFY `nd` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `nd` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT de la tabla `productos`
@@ -525,7 +593,7 @@ ALTER TABLE `tickets`
 -- AUTO_INCREMENT de la tabla `ventas`
 --
 ALTER TABLE `ventas`
-  MODIFY `id_ventas` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_ventas` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
